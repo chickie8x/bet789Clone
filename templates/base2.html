@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bet789</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0ea2bdc334.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header-wrapper grids">
+
+        <div class="header-logo">
+            <img class="img-fluid mh-100 " src="{% static 'images/logo-1.png' %}" alt="">
+        </div>
+        <div class="header-reg d-flex">
+            <a id="dangky" href="#">Đăng ký <i class="fa fa-plus" id="plusReg"></i></a>
+        </div>
+        <div class="header-login">
+            <a id="dangnhap" href="#">Đăng nhập</a>
+        </div>
+        <div class="header-discount">
+            <a id="khuyenmai" href="#"><i class="fas fa-gift" id="giftKM">KHUYẾN MÃI</i></a>
+        </div>
+        <div class="navigation-bar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-orange">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        {% for cat in categories %}
+                            {% if cat.slug != 'homepage' %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/{{ cat.slug }}">{{ cat.display }}</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">{{ cat.display }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<div class="sidebar">
+    <a href="#"> <i class="fas fa-gift"></i>Ưu đãi</a>
+    <a href="#"><i class="fas fa-question-circle"></i>Hỗ trợ</a>
+    <a href="#"><i class="fas fa-cloud-download-alt"></i>Download</a>
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+<div class="footer-wrapper">
+    <div class="footer-img d-flex justify-content-center">
+        <img class="img-fluid mw-100 mh-100 mx-auto" src="{% static 'images/doi-tac-vn789bet.png' %}" alt="">
+    </div>
+    <div class="footer-links">
+        <ul class="footer-ul">
+            <li class="footer-li"><a class="flinks" href="#">liên hệ</a></li>
+            <li class="footer-li"><a class="flinks" href="#">câu hỏi thường gặp</a></li>
+            <li class="footer-li"><a class="flinks" href="#">điều khoản & điều kiện</a></li>
+            <li class="footer-li"><a class="flinks" href="#">quyền riêng tư</a></li>
+            <li class="footer-li"><a class="flinks" href="#">about us </a></li>
+
+        </ul>
+    </div>
+    <div class="copyright">
+        Copyright 2021 © <span class="site-name">vn789bet</span>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+</body>
+</html>

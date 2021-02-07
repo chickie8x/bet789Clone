@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% block  content %}
+    <div class="post-list-wrapper">
+        <div class="posts">
+        <h4 class="sub-cat">chuyên mục {{ cat.display }}</h4>
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="cat-post d-flex flex-row">
+                        <div class="post-img-wrapper">
+                            <img class="post-img" src="/{{ article.feature_img }}" alt="">
+                            <span class="datetime">{{ article.pubDate|date:"M d" }}</span>
+                        </div>
+                        <div class="post-content-wrapper">
+                            <h5 class="post-title"><a class="title-link"
+                                                      href="{{ article.slug }}">{{ article.title }}</a></h5>
+                            <p class="post-desc">{{ article.desc }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2 class="404">
+                    <p class="text-danger text-center"> Opps! No article here :(</p>
+                </h2>
+            {% endif %}
+        </div>
+
+        <div class="side-posts col w-25">
+            <h4 class="sub-cat">Tin gần đây</h4>
+            {% if sidePosts %}
+                {% for sidePost in sidePosts %}
+                    <div class="side-post">
+                        <div class="side-post-img-wrapper">
+                            <img class="side-post-img" src="/{{ sidePost.feature_img }}" alt="">
+                        </div>
+                        <div class="side-post-content-wrapper">
+                            <h5 class="side-post-title"><a class="side-post-title-link"
+                                                           href="/{{ sidePost.cat }}/{{ sidePost.slug }}">{{ sidePost.title }}</a>
+                            </h5>
+                            <p class="side-post-desc">{{ sidePost.desc|truncatewords:15 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

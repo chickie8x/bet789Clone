@@ -1,0 +1,55 @@
+{% extends 'base2.html' %}
+{% block  content %}
+    <div class="post-list-wrapper">
+        <div class="posts" id="post-detail">
+            <h4 class="post-detail-title">
+                {{ post.title }}
+            </h4>
+            <div class="post-content-desc">
+                {{ post.desc }}
+            </div>
+            <div class="post-content-detail">
+                {{ post.content }}
+            </div>
+            <span class="pubdate">
+                Posted on {{ post.pubDate|date:'d M Y' }}
+            </span>
+
+                <form class="comment">
+                    <h4>Trả lời</h4>
+                    <p>Email của bạn sẽ không được hiển thị công khai. Các trường bắt buộc được đánh dấu *</p>
+                    <div class="form-group d-flex flex-row">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tên *">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email *">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Website">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Bình luận </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <input class="comment-btn" type="submit" value="Phản hồi">
+                </form>
+
+        </div>
+
+        <div class="side-posts col w-25">
+            <h4 class="sub-cat">Tin gần đây</h4>
+            {% if sidePosts %}
+                {% for sidePost in sidePosts %}
+                    <div class="side-post">
+                        <div class="side-post-img-wrapper">
+                            <img class="side-post-img" src="/{{ sidePost.feature_img }}" alt="">
+                        </div>
+                        <div class="side-post-content-wrapper">
+                            <h5 class="side-post-title"><a class="side-post-title-link"
+                                                           href="/{{ sidePost.cat }}/{{ sidePost.slug }}">{{ sidePost.title }}</a>
+                            </h5>
+                            <p class="side-post-desc">{{ sidePost.desc|truncatewords:15 }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

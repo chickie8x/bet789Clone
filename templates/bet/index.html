@@ -1,0 +1,113 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block  content %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-01-1024x352.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-02-1024x352.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-03-1024x352.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-04-1024x352.jpg" alt="Fourth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-06-1024x352.jpg" alt="Fiveth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-07-1024x352.jpg" alt="Sixth slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="static/images/vn789bet-slider-015-1024x352.jpg" alt="Seventh slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
+    <div class="content-wrapper">
+        <div class="notification-wrapper d-flex flex-row ">
+            <i class="fa fa-volume-down" id="volume"></i>
+            <marquee>&#8203;Đã được chứng nhận bởi hơn một triệu người chơi, là trang giải trí trực tuyến có thực
+                lực
+                nhất hiện nay, với giải thưởng siêu cấp có giá trị hàng tỷ đang chờ bạn!
+            </marquee>
+        </div>
+
+
+        <div class="guide grids">
+            <div class="guide-item" id="guide-item1">
+                <div class="row">
+                    <img src="{% static 'images/gifs/home_feature_1.gif' %}" alt="">
+                    <div class="col">
+                        <button class="guide-link">Đăng ký</button>
+                        <p class="guide-content">Điền thông tin chính xác</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-item" id="guide-item2">
+                <div class="row">
+                    <img src="{% static 'images/gifs/home_feature_2.gif' %}" alt="">
+                    <div class="col">
+                        <button class="guide-link">Gửi tiền</button>
+                        <p class="guide-content">Kiểm tra tài khoản ngân hàng trước khi gửi tiền</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-item" id="guide-item3">
+                <div class="row">
+                    <img src="{% static 'images/gifs/home_feature_3.gif' %}" alt="">
+                    <div class="col">
+                        <button class="guide-link">Nhận tiền & chơi</button>
+                        <p class="guide-content">Nhận thêm tiền thưởng và trải nghiệm đặt cược của bạn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="article-list grids">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="article d-flex flex-column" id="article{{ article.id }}">
+                        <div class="img-wrapper">
+                            <img class="article-img" src="{{ article.feature_img }}" alt="">
+                            <span class="datetime">{{ article.pubDate|date:"M d" }}</span>
+                        </div>
+
+                        <h5 class="article-title"><a class="title-link"
+                                                     href="{{ article.cat }}/{{ article.slug }}">{{ article.title }}</a></h5>
+                        <p class="article-desc">{{ article.desc|truncatewords:45 }}</p>
+
+                        <a class="readmore-btn" href="{{ article.cat }}/{{ article.slug }}">xem ngay</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock %}
