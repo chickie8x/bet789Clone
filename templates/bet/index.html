@@ -98,7 +98,7 @@
                         </div>
 
                         <h5 class="article-title"><a class="title-link"
-                                                     href="{{ article.cat }}/{{ article.slug }}">{{ article.title }}</a></h5>
+                                                     href="{{ article.cat }}/{{ article.slug }}">{{ article.title|truncatewords:15 }}</a></h5>
                         <p class="article-desc">{{ article.desc|truncatewords:45 }}</p>
 
                         <a class="readmore-btn" href="{{ article.cat }}/{{ article.slug }}">xem ngay</a>

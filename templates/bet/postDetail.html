@@ -9,7 +9,7 @@
                 {{ post.desc }}
             </div>
             <div class="post-content-detail">
-                {{ post.content }}
+                {{ post.content| safe }}
             </div>
             <span class="pubdate">
                 Posted on {{ post.pubDate|date:'d M Y' }}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
@@ -15,7 +16,7 @@ class Article(models.Model):
     title = models.CharField(max_length=250)
     feature_img = models.CharField(max_length=500)
     desc = models.TextField()
-    content = models.TextField()
+    content = RichTextUploadingField(blank=True, null=True)
     pubDate = models.DateField();
     slug = models.SlugField(max_length=250, null=True, blank=True)
     cat = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
